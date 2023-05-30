@@ -12,7 +12,7 @@ def driver():
     chrome_options.add_argument("--disable-gpu")
     driver = webdriver.Chrome(options=chrome_options)
     driver.maximize_window()
-    driver.get("https://your_website_url.com/login")
+    driver.get("https://www.opencart.com/index.php?route=account/login")
     yield driver
     driver.quit()
 
