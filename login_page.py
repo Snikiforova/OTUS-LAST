@@ -7,8 +7,10 @@ class LoginPage:
     def enter_email(self, email):
         pass
 
+
     def enter_password(self, password):
         pass
+
 
     def click_login_button(self):
         pass

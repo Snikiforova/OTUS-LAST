@@ -7,6 +7,8 @@ class RegistrationPage:
     def enter_firstname(self, firstname):
         pass
 
+
+
     def enter_lastname(self, lastname):
         pass
 

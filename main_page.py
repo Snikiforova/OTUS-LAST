@@ -10,5 +10,7 @@ class MainPage:
     def click_login(self):
         pass
 
+
+
     def click_registration(self):
         pass
