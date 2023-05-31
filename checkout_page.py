@@ -10,6 +10,7 @@ class CheckoutPage:
         pass
 
     def enter_guest_details(self, firstname, lastname, email, phone):
+
         pass
 
     def enter_address_information(self, address, city, postcode, country, region):

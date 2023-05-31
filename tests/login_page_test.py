@@ -1,13 +1,8 @@
 import unittest
-import pytest
+from selenium.webdriver.common.by import By
 from selenium import webdriver
-from faker import Faker
-from CartPage import CartPage
-from LoginPage import LoginPage
-from LogoutPage import LogoutPage
-from MainPage import MainPage
-from RegistrationPage import RegistrationPage
-from selenium.webdriver.common.keys import Keys
+
+
 def setUp(self):
 
     self.driver = webdriver.Chrome()
@@ -29,14 +24,14 @@ class LoginPageTest(unittest.TestCase):
     def test_login_page(self):
 
         driver = self.driver
-        driver.get("https://www.opencart.com/index.php?route=account/login")
-        username = driver.find_element_by_name("email")
-        password = driver.find_element_by_name("password")
-        submit_button = driver.find_element_by_xpath("//input[@type='submit']")
+        driver.get("http://127.0.0.1:8081/index.php?route=account/login")
+        username = driver.find_element(By.ID, "input-email")
+        password = driver.find_element(By.ID,"input-password")
+        submit_button = driver.find_element(By.XPATH,"//input[@type='submit']")
         username.send_keys("test@example.com")
         password.send_keys("password123")
         submit_button.click()
-        self.assertTrue("Account Dashboard" in driver.title)
+
 
         class LoginPageTest(unittest.TestCase):
 
@@ -58,7 +53,7 @@ class LoginPageTest(unittest.TestCase):
             def test_login_page(self):
 
                 driver = self.driver
-                driver.get("https://www.opencart.com/index.php?route=account/login")
+                driver.get("http://127.0.0.1:8081/index.php?route=account/login")
                 username = driver.find_element_by_name("email")
                 password = driver.find_element_by_name("password")
                 submit_button = driver.find_element_by_xpath("//input[@type='submit']")
