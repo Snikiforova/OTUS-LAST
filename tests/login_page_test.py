@@ -1,5 +1,12 @@
 import unittest
 from selenium import webdriver
+from faker import Faker
+from CartPage import CartPage
+from ChangeCurrency import ChangeCurrency
+from LoginPage import LoginPage
+from LogoutPage import LogoutPage
+from MainPage import MainPage
+from RegistrationPage import RegistrationPage
 from selenium.webdriver.common.keys import Keys
 def setUp(self):
 
@@ -21,7 +28,7 @@ class LoginPageTest(unittest.TestCase):
         self.driver.quit()
 
     def test_login_page(self):
-        # Тестовый метод
+
         driver = self.driver
         driver.get("https://www.opencart.com/index.php?route=account/login")
         username = driver.find_element_by_name("email")
