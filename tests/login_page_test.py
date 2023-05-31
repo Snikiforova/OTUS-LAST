@@ -1,7 +1,13 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+def setUp(self):
 
+    self.driver = webdriver.Chrome()  # Для Chrome
+
+    self.driver.implicitly_wait(10)
+
+class LoginPageTest(unittest.TestCase):
 
 class LoginPageTest(unittest.TestCase):
 
