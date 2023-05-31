@@ -2,6 +2,9 @@ import unittest
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 
+from cartpage import CartPage
+from mainpage import MainPage
+
 
 def setUp(self):
 
@@ -61,3 +64,17 @@ class LoginPageTest(unittest.TestCase):
                 password.send_keys("password123")
                 submit_button.click()
                 self.assertTrue("Account Dashboard" in driver.title)
+
+def test_registration_and_checkout(faker, driver):
+    main_page = MainPage(driver)
+    driver.get("http://127.0.0.1:8081/index.php?route=common/home")
+
+    main_page.add_to_cart()
+    main_page.open_cart()
+    main_page.checkout()
+
+
+    cartPage = CartPage(driver,faker)
+    driver.get("http://127.0.0.1:8081/index.php?route=checkout/checkout")
+    cartPage.click_register_account()
+    cartPage.fill_register_account()
