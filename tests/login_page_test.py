@@ -1,4 +1,5 @@
 import unittest
+import pytest
 from selenium import webdriver
 from faker import Faker
 from CartPage import CartPage
@@ -13,7 +14,6 @@ def setUp(self):
 
     self.driver.implicitly_wait(10)
 
-class LoginPageTest(unittest.TestCase):
 
 class LoginPageTest(unittest.TestCase):
 
