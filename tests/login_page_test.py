@@ -48,8 +48,7 @@ class LoginPageTest(unittest.TestCase):
                 self.driver = webdriver.Firefox(firefox_options=firefox_options,
                                                 executable_path="C:\\tools\\geckodriver.exe")
 
-                 Для Edge на Windows 10:
-                self.driver = webdriver.Edge(executable_path="C:\\tools\\MicrosoftWebDriver.exe")
+
 
                 self.driver.implicitly_wait(10)
 
