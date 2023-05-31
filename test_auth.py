@@ -1,32 +1,10 @@
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from login_page import LoginPage
-from registration_page import RegistrationPage
+from pages.login_page import LoginPage
+from pages.registration_page import RegistrationPage
+from utils.constants import BASE_URL
 
-
-@pytest.fixture(scope="module")
-def driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.maximize_window()
-    driver.get("https://www.opencart.com/index.php?route=account/login")
-    yield driver
-    driver.quit()
-
-
-@pytest.fixture(scope="module")
-def login_page(driver):
-    return LoginPage(driver)
-
-@pytest.fixture(scope="module")
-def registration_page(driver):
-    return RegistrationPage(driver)
-
-
-def test_login_with_valid_credentials(driver, login_page):
+def test_login_with_valid_credentials(driver):
+    driver.get(BASE_URL + "/index.php?route=account/login")
+    login_page = LoginPage(driver)
     email = "test@example.com"
     password = "test_password"
     login_page.enter_email(email)
@@ -34,7 +12,9 @@ def test_login_with_valid_credentials(driver, login_page):
     login_page.click_login_button()
     assert login_page.check_login_success()
 
-def test_login_with_invalid_credentials(driver, login_page):
+def test_login_with_invalid_credentials(driver):
+    driver.get(BASE_URL + "/index.php?route=account/login")
+    login_page = LoginPage(driver)
     email = "invalid@example.com"
     password = "invalid_password"
     login_page.enter_email(email)
@@ -42,8 +22,9 @@ def test_login_with_invalid_credentials(driver, login_page):
     login_page.click_login_button()
     assert not login_page.check_login_success()
 
-
-def test_registration_with_valid_data(driver, registration_page):
+def test_registration_with_valid_data(driver):
+    driver.get(BASE_URL + "/index.php?route=account/register")
+    registration_page = RegistrationPage(driver)
     firstname = "Test"
     lastname = "User"
     email = "test@example.com"
@@ -59,7 +40,9 @@ def test_registration_with_valid_data(driver, registration_page):
     registration_page.click_register_button()
     assert registration_page.check_registration_success()
 
-def test_registration_with_invalid_data(driver, registration_page):
+def test_registration_with_invalid_data(driver):
+    driver.get(BASE_URL + "/index.php?route=account/register")
+    registration_page = RegistrationPage(driver)
     firstname = ""
     lastname = ""
     email = "invalid_email"
