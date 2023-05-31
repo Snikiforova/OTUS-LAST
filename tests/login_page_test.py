@@ -2,7 +2,6 @@ import unittest
 from selenium import webdriver
 from faker import Faker
 from CartPage import CartPage
-from ChangeCurrency import ChangeCurrency
 from LoginPage import LoginPage
 from LogoutPage import LogoutPage
 from MainPage import MainPage
@@ -10,7 +9,7 @@ from RegistrationPage import RegistrationPage
 from selenium.webdriver.common.keys import Keys
 def setUp(self):
 
-    self.driver = webdriver.Chrome()  # Для Chrome
+    self.driver = webdriver.Chrome()
 
     self.driver.implicitly_wait(10)
 
