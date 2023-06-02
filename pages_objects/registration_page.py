@@ -30,6 +30,10 @@ class RegistrationPage(BasePage):
         )
         register_link.click()
 
+    def open(self):
+        self.driver.get(self.URL)
+
+
     def fill_registration_form(self):
         first_name_input = self.driver.find_element(By.NAME, "firstname")
         last_name_input = self.driver.find_element(By.NAME, "lastname")
