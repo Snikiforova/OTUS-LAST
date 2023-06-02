@@ -1,10 +1,8 @@
-
 import random
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-
 
 
 class CartPage:
@@ -35,14 +33,14 @@ class CartPage:
         self.driver.find_element(By.ID, "input-payment-address-2").send_keys(address[1])
         self.driver.find_element(By.ID, "input-payment-city").send_keys(self.faker.city())
         self.driver.find_element(By.ID, "input-payment-postcode").send_keys(self.faker.postcode())
-        country = Select(driver.find_element_by_id('input-payment-country'))
+        country = Select(self.driver.find_element_by_id('input-payment-country'))
         country.select_by_index(random.randint(1, 259))
-        region = Select(driver.find_element_by_id('input-payment-zone'))
+        region = Select(self.driver.find_element_by_id('input-payment-zone'))
         region.select_by_index(random.randint(3513, 3612))
         self.driver.find_element(By.ID, "input-payment-password").send_keys(password)
         self.driver.find_element(By.ID, "input-payment-confirm").send_keys(password)
-        self.driver.find_element(By.XPATH, '//*[@id="collapse-payment-address"]/div/div[3]/div/input[1]').click
-        self.driver.find_element(By.ID, "button-register").click()
+        self.driver.find_element(By.XPATH, '//*[@id="collapse-payment-address"]/div/div[3]/div/input[1]') \
+            .click()
 
     def fill_guest_account(self):
         address = self.faker.address().split(",")
@@ -55,8 +53,8 @@ class CartPage:
         self.driver.find_element(By.ID, "input-payment-address-2").send_keys(address[1])
         self.driver.find_element(By.ID, "input-payment-city").send_keys(self.faker.city())
         self.driver.find_element(By.ID, "input-payment-postcode").send_keys(self.faker.postcode())
-        country = Select(driver.find_element_by_id('input-payment-country'))
+        country = Select(self.driver.find_element_by_id('input-payment-country'))
         country.select_by_index(random.randint(1, 259))
-        region = Select(driver.find_element_by_id('input-payment-zone'))
+        region = Select(self.driver.find_element_by_id('input-payment-zone'))
         region.select_by_index(random.randint(3513, 3612))
         self.driver.find_element(By.ID, "button-guest").click()
