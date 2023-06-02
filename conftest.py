@@ -1,6 +1,8 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from pages_objects.login_page import LoginPage
+from pages_objects.main_page import MainPage
 from pages_objects.registration_page import RegistrationPage
 
 
@@ -66,6 +68,10 @@ def registration_page(driver, request):
     email = request.config.getoption("--email")
     password = request.config.getoption("--password")
     return RegistrationPage(driver, email, password)
+
+
+class BuyPage:
+    pass
 
 
 @pytest.fixture(scope='module')
